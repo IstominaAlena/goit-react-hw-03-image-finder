@@ -25,6 +25,9 @@ class ImageGalleryList extends Component {
   componentDidUpdate(prevProps, _) {
     const prevQuery = prevProps.propsQuery;
     const nextQuery = this.props.propsQuery;
+    if (nextQuery === "") {
+      return;
+    }
 
     if (this.state.status === "pending") {
       this.searchImages();
