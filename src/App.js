@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Section from "./shared/components/Section";
 import Searchbar from "./components/Searchbar";
@@ -23,8 +25,9 @@ class App extends Component {
         </Section>
 
         <Section>
-          <ImageGalleryList fetchData={this.state.query} />
+          <ImageGalleryList propsQuery={this.state.query} />
         </Section>
+        <ToastContainer autoClose={3000} position="top-center" />
       </>
     );
   }

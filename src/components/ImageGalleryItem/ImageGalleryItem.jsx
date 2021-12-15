@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
-// import s from "./ImageGalleryItem.module.css";
+import s from "./ImageGalleryItem.module.css";
 
-const ImageGalleryItem = ({ imageData }) => {
+const ImageGalleryItem = ({ imageData, onClick }) => {
   const items = imageData.map((item) => (
-    <li className="gallery-item" key={item.id} dataimage={item.largeImageURL}>
-      <img src={item.webformatURL} alt={item.tags} width="150" />
+    <li
+      className={s["gallery-item"]}
+      key={item.id}
+      onClick={() => onClick(item.id)}
+    >
+      <img
+        src={item.webformatURL}
+        alt={item.tags}
+        className={s["gallery-img"]}
+      />
     </li>
   ));
   return [items];
@@ -21,4 +29,5 @@ ImageGalleryItem.propTypes = {
       largeImageURL: PropTypes.string.isRequired,
     })
   ),
+  onClick: PropTypes.func,
 };

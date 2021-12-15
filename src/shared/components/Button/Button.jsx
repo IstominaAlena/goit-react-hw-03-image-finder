@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import styles from "./Button.module.css";
+import s from "./Button.module.css";
 
-const Button = ({ type, text, onClick }) => {
+const Button = ({ type, text, onClick, className }) => {
   return (
     <button
       onClick={onClick ? onClick : undefined}
       type={type}
-      className={type === "submit" ? styles.submitBtn : styles.btn}
+      className={s[className]}
     >
       {text}
     </button>
@@ -27,4 +27,5 @@ Button.propTypes = {
     PropTypes.object,
   ]),
   onClick: PropTypes.func,
+  className: PropTypes.string,
 };

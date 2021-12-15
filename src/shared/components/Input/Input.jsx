@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
-import styles from "./Input.module.css";
+import s from "./Input.module.css";
 
 const id = nanoid();
 
@@ -19,18 +19,14 @@ const Input = (props) => {
   } = props;
 
   return (
-    <div
-      className={
-        name === "filter" ? styles.filterComponent : styles.formComponent
-      }
-    >
+    <div className={name === "filter" ? s.filterComponent : s.formComponent}>
       {labelName && (
-        <label htmlFor={id} className={styles.formLabel}>
+        <label htmlFor={id} className={s.formLabel}>
           {labelName}:
         </label>
       )}
       <input
-        className={styles.formInput}
+        className={s.formInput}
         id={id}
         value={value}
         onChange={onChange}
@@ -49,7 +45,7 @@ export default Input;
 
 Input.defaultProps = {
   type: "text",
-  placeholder: undefined,
+  // placeholder: undefined,
   autoFocus: false,
 };
 

@@ -4,10 +4,7 @@ import styles from "./Section.module.css";
 const Section = ({ title, children }) => {
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>{title}</h2>
-        {children}
-      </div>
+      <div className={styles.container}>{children}</div>
     </section>
   );
 };

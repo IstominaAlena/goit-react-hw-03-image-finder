@@ -1,38 +1,48 @@
-/* button {
+button {
   cursor: pointer;
 }
 
-.submitBtn {
-  padding: 0;
-  width: 50%;
-  height: 25px;
-  align-self: center;
-  font-family: 'Caveat', cursive;
-  font-size: 16px;
-  color: #fff;
-  background-color: rgb(136, 119, 181);
-  border: 1px solid rgb(105, 89, 150);
-  border-radius: 10px;
-}
-
-.submitBtn:hover,
-.submitBtn:focus {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.btn {
+.modal-close {
   position: absolute;
   top: 5px;
   right: 5px;
-  padding: 0 3px 3px 3px;
   background-color: transparent;
   border: none;
-  color: rgb(136, 119, 181);
+  color: rgb(21, 180, 243);
 }
 
-.btn:hover,
-.btn:focus {
-  border: 1px solid rgb(105, 89, 150);
+.modal-close:hover,
+.modal-close:focus {
+  color: red;
+}
+
+.search {
+  margin-left: 30px;
+  padding: 0;
+  padding-top: 2px;
+  width: 30px;
+  height: 30px;
   border-radius: 50% 50%;
-} */
+  border-color: rgb(21, 180, 243);
+  background-color: #fff;
+}
+
+.load-more {
+  border-radius: 5px;
+  border-color: rgb(21, 180, 243);
+  color: rgb(21, 180, 243);
+  background-color: #fff;
+}
+
+.search:hover,
+.search:focus,
+.load-more:hover,
+.load-more:focus {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.search:active,
+.load-more:active {
+  background-color: rgb(21, 180, 243);
+}
