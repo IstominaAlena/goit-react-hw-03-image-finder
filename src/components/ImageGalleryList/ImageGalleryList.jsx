@@ -49,7 +49,7 @@ class ImageGalleryList extends Component {
       const { page } = this.state;
 
       const result = await galleryAPI.fetchQuery(query, page);
-      if (result.data.hits.length === 0) {
+      if (!result.data.hits.length) {
         toast.error("Sorry we can't find anything(");
       }
       this.setState((prevState) => ({
