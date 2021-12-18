@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { SpinnerDotted } from "spinners-react";
 import PropTypes from "prop-types";
 import { galleryAPI } from "../../shared/servises/galleryAPI";
 import { toast } from "react-toastify";
@@ -8,6 +7,8 @@ import Button from "../../shared/components/Button";
 import ImageGalleryItem from "../ImageGalleryItem";
 import Modal from "../../shared/components/Modal";
 import ContentForModal from "../ContentForModal";
+import Error from "../Error";
+import Spinner from "../../shared/components/Spinner";
 
 import s from "./ImageGalleryList.module.css";
 
@@ -25,7 +26,7 @@ class ImageGalleryList extends Component {
   componentDidUpdate(prevProps, _) {
     const prevQuery = prevProps.propsQuery;
     const nextQuery = this.props.propsQuery;
-    if (nextQuery === "") {
+    if (!nextQuery) {
       return;
     }
 
@@ -89,56 +90,32 @@ class ImageGalleryList extends Component {
   };
 
   render() {
-    const { gallery, totalImages, page, status, modalOpen, error } = this.state;
+    const { gallery, totalImages, page, status, modalOpen, error, modalObj } =
+      this.state;
+    const { hideModal, showModal, handleClick } = this;
     const totalPages = Math.ceil(totalImages / 12);
 
     return (
       <>
-        {status === "pending" && (
-          <SpinnerDotted
-            style={{
-              zIndex: "999",
-              color: "rgb(21, 180, 243)",
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          />
-        )}
+        {status === "pending" && <Spinner />}
 
-        {status === "rejected" && (
-          <div className={s["error-container"]}>
-            <img
-              src={
-                "https://icons.iconarchive.com/icons/gakuseisean/ivista-2/128/Alarm-Error-icon.png"
-              }
-              alt="error"
-              width="50"
-              className={s["error-img"]}
-            />
-            <p className={s["error-text"]}>
-              <span>Error: </span>
-              {error}
-            </p>
-          </div>
-        )}
+        {status === "rejected" && <Error error={error} />}
 
         {modalOpen && (
-          <Modal closeModal={this.hideModal}>
-            <ContentForModal {...this.state.modalObj} />
+          <Modal closeModal={hideModal}>
+            <ContentForModal {...modalObj} />
           </Modal>
         )}
         {gallery.length > 0 && (
           <ul className={s.gallery}>
-            <ImageGalleryItem imageData={gallery} onClick={this.showModal} />
+            <ImageGalleryItem imageData={gallery} onClick={showModal} />
           </ul>
         )}
         {gallery.length > 0 && page < totalPages && (
           <Button
             type="button"
             text="Load more"
-            onClick={this.handleClick}
+            onClick={handleClick}
             className={"load-more"}
           />
         )}

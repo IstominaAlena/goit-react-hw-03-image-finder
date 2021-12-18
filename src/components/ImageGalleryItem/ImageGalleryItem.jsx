@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import s from "./ImageGalleryItem.module.css";
 
 const ImageGalleryItem = ({ imageData, onClick }) => {
-  const items = imageData.map((item) => (
+  const item = imageData.map((item) => (
     <li
       className={s["gallery-item"]}
       key={item.id}
@@ -15,7 +15,7 @@ const ImageGalleryItem = ({ imageData, onClick }) => {
       />
     </li>
   ));
-  return [items];
+  return item;
 };
 
 export default ImageGalleryItem;

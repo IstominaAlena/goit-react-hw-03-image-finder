@@ -11,20 +11,3 @@
   text-align: center;
   color: rgb(21, 180, 243);
 }
-
-.error-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 500px;
-}
-.error-text {
-  margin-left: 20px;
-}
-
-.error-text > span {
-  font-weight: 700;
-  color: red;
-}
