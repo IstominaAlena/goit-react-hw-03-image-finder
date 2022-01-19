@@ -26,13 +26,14 @@ class ImageGalleryList extends Component {
   componentDidUpdate(prevProps, _) {
     const prevQuery = prevProps.propsQuery;
     const nextQuery = this.props.propsQuery;
+
     if (!nextQuery) {
       return;
     }
 
-    if (this.state.status === "pending") {
-      this.searchImages();
-    }
+    // if (this.state.status === "pending") {
+    this.searchImages();
+    // }
 
     if (prevQuery !== nextQuery) {
       this.setState({
@@ -51,6 +52,7 @@ class ImageGalleryList extends Component {
       const result = await galleryAPI.fetchQuery(query, page);
       if (!result.data.hits.length) {
         toast.error("Sorry we can't find anything(");
+        return;
       }
       this.setState((prevState) => ({
         gallery: [...prevState.gallery, ...result.data.hits],
